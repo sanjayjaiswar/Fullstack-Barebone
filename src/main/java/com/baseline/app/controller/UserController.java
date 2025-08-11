@@ -3,12 +3,14 @@ package com.baseline.app.controller;
 import com.baseline.app.dto.PageResponse;
 import com.baseline.app.dto.UserDto;
 import com.baseline.app.service.UserService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/users")
 @PreAuthorize("hasRole('ADMIN')")
+@SecurityRequirement(name = "bearerAuth")
 public class UserController {
     private final UserService userService;
 
@@ -17,7 +19,8 @@ public class UserController {
     }
 
     @GetMapping
-    public PageResponse<UserDto> all(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "20") int size) {
+    public PageResponse<UserDto> all(@RequestParam(defaultValue = "0") int page,
+                                     @RequestParam(defaultValue = "20") int size) {
         return userService.findAll(page, size);
     }
 

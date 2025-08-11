@@ -16,6 +16,10 @@ spring:
       enabled: true
       path: /h2
 
+jwt:
+  secret: sj_jwt_secret_key_1234567890_ABCDEFGHIJKLMNOPQRSTUVWXYZ
+  expiration-seconds: 3600
+
 ---
 
 spring:
@@ -31,7 +35,7 @@ spring:
       ddl-auto: validate
 
 jwt:
-  secret: ${JWT_SECRET}
+  secret: sj_jwt_secret_key_1234567890_ABCDEFGHIJKLMNOPQRSTUVWXYZ
   expiration-seconds: 3600
 
 springdoc:
