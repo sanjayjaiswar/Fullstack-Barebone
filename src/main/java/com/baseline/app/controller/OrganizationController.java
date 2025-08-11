@@ -2,6 +2,7 @@ package com.baseline.app.controller;
 
 import com.baseline.app.dto.OrganizationDto;
 import com.baseline.app.service.OrganizationService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/organizations")
 @PreAuthorize("hasRole('ADMIN')")
+@SecurityRequirement(name = "bearerAuth")
 public class OrganizationController {
     private final OrganizationService organizationService;
 
